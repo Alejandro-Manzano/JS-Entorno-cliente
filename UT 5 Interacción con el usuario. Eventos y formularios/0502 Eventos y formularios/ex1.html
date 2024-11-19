@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 1</title>
+    <style>
+        span{
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,33 +17,34 @@
     <form>
 
         <label>Nombre:</label>
-        <input id="nombre" name="nombre" required>
+        <input id="nombre" name="nombre"><span id="s1"></span>
 
         <br><br>
 
         <label>Cursos que te interesan:</label>
-        <input type="checkbox" value="C#" name="curso">C#
-        <input type="checkbox" value="Java" name="curso">Java
-        <input type="checkbox" value="PHP" name="curso">PHP
-        <input type="checkbox" value="Phyton" name="curso">Phyton
+        <input type="checkbox" id="t" value="C#" name="curso">C#
+        <input type="checkbox" id="t" value="Java" name="curso">Java
+        <input type="checkbox" id="t" value="PHP" name="curso">PHP
+        <input type="checkbox" id="t" value="Phyton" name="curso">Phyton    <span id="s2"></span>
 
         <br><br>
 
         <label>Edad:</label>
         <select id="sl">
-            <option >--Selecciona una opción--</option>
+            <option ></option>
             <option name="op" id="o1">Menos de 16</option>
             <option name="op" id="o2">Entre 16 y 65</option>
             <option name="op" id="o3">Más de 65</option>
-        </select>
+        </select> <span id="s3"></span>
 
         <br><br>
 
-        <!-- <label>Eres socio?:</label>
-        <input type="radio" value="SI">SI
-        <input type="radio" value="NO">NO
+        <label>Eres socio?:</label>
+        <input type="radio" value="SI" name="radio">SI
+        <input type="radio" value="NO" name="radio">NO
+        <span id="s4"></span>
 
-        <br><br>    -->
+        <br><br>    
 
         <button id="btn">Enviar</button>
 
@@ -50,6 +56,8 @@
         <p id="p1"></p>
         <p id="p2"></p>
         <p id="p3"></p>
+        <p id="p4"></p>
+
 
     </div>
 

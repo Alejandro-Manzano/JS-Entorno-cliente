@@ -1,48 +1,60 @@
+function imprimir() {
 
-    function imprimir() {
-
-        //titulo resultados
-        document.getElementById("h1").innerHTML = "Resultados - Formulario";
-       
-        
-        let name = document.getElementById("nombre");
-        document.getElementById("p1").innerHTML = "Nombre: " + name.value;
-
-
-
-        //Compruebo los lenguages de programación
-        const checkboxes = document.querySelectorAll('input[name="curso"]');
-        let seleccionados = [];
-        // Comprobar si al menos uno está marcado
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                seleccionados.push(checkbox.value);
-            }
-        });
-
-        // Mostrar mensaje de error si no hay ninguno seleccionado
-        const mensajeError = document.getElementById("error");
-        if (seleccionados.length == 0) {
-            mensajeError.innerHTML = "Por favor, selecciona al menos un curso.";
-        } else{
-            mensajeError.innerHTML = "";
-            document.getElementById("p2").innerHTML = "Cursos seleccionados: " ;
-            seleccionados.forEach(element => {
-                document.getElementById("p2").innerHTML += element + "  ";
-            });
-        }
-
-        let op = document.querySelectorAll["sl"];
-        document.getElementById("p3").innerHTML = "Edad: " +op.value;
-
+    let acc = 0;
+    // Título de los resultados
+    document.getElementById("h1").innerHTML = "Resultados - Formulario";
+    
+    let name = document.getElementById("nombre");
+    // Corregir la comparación con '==='
+    if (name.value === "") {
+        document.getElementById("s1").innerHTML = "  Rellene este campo";
+    } else {
+        document.getElementById("p1").innerHTML = "Nombre: " + name.value + "<br>";
+        acc+=1;
     }
 
+    // Comprobar los lenguajes de programación seleccionados
+    const checkboxes = document.querySelectorAll("input[name='curso']:checked");  
+    if (checkboxes.length == 0) {
+        document.getElementById("s2").innerHTML = "  Rellene este campo";
+    } else {
+        document.getElementById("p2").innerHTML = "Lenguajes seleccionados: "; 
+        checkboxes.forEach(element => {
+            document.getElementById("p2").innerHTML += element.value + " ";
+        });
+        acc+=1;
+    }
 
-    let btn = document.getElementById("btn");
-    btn.addEventListener("click", function (event) {
-        // Prevenir el envío del formulario
-        event.preventDefault();
-     
-        imprimir();
-    });
+    // Comprobar la edad seleccionada
+    let edad = document.getElementById("sl");
+    // Corregir la comparación con '==='
+    if (edad.value === "") {
+        document.getElementById("s3").innerHTML = "  Rellene este campo";
+    } else {
+        document.getElementById("p3").innerHTML = "<br><br> Edad: " + edad.value;
+        acc+=1;
+    }
 
+    // Comprobar si es socio
+    const res = document.querySelectorAll("input[name='radio']:checked");   
+    if (res.length == 0) {
+        document.getElementById("s4").innerHTML = "  Rellene este campo";
+    } else {
+        document.getElementById("p4").innerHTML = "Es socio? : ";
+        res.forEach(element => {
+            document.getElementById("p4").innerHTML += element.value + " ";
+        });
+        acc+=1;
+    }
+    console.log(acc);
+    
+}
+
+let btn = document.getElementById("btn");
+
+btn.addEventListener("click", function (event) {
+    // Prevenir el envío del formulario
+    event.preventDefault();
+ 
+    imprimir();
+});
