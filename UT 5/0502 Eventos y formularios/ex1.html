@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+
+    <h1>Ejercicio 1 - Manejar valores de los widgets</h1>
+    
+    <form>
+
+        <label>Nombre:</label>
+        <input id="nombre" name="nombre" required>
+
+        <br><br>
+
+        <label>Cursos que te interesan:</label>
+        <input type="checkbox" value="C#" name="curso">C#
+        <input type="checkbox" value="Java" name="curso">Java
+        <input type="checkbox" value="PHP" name="curso">PHP
+        <input type="checkbox" value="Phyton" name="curso">Phyton
+
+        <br><br>
+
+        <label>Edad:</label>
+        <select id="sl">
+            <option >--Selecciona una opción--</option>
+            <option name="op" id="o1">Menos de 16</option>
+            <option name="op" id="o2">Entre 16 y 65</option>
+            <option name="op" id="o3">Más de 65</option>
+        </select>
+
+        <br><br>
+
+        <!-- <label>Eres socio?:</label>
+        <input type="radio" value="SI">SI
+        <input type="radio" value="NO">NO
+
+        <br><br>    -->
+
+        <button id="btn">Enviar</button>
+
+    </form>
+
+    <div id="container">
+
+        <h1 id="h1"></h1>
+        <p id="p1"></p>
+        <p id="p2"></p>
+        <p id="p3"></p>
+
+    </div>
+
+    <script src="./JS/ex1.js"></script>
+</body>
+</html>

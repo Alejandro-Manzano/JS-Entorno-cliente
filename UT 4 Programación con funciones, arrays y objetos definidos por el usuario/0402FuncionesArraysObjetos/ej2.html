@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+
+    <h1>Ejercicio 6 - Palíndromo</h1>
+    <h2 id="h2"></h2>
+    
+    <script>
+
+        function palindromo() {
+            
+            let frase = prompt("Introduce una frase");
+
+            let arr1 = frase.toLowerCase().split('').filter(letra => letra !== ' ');
+            let arr2 = [...arr1].reverse(); //le hago una copia
+            
+            let acc = 0;
+
+            console.log(arr1);
+            console.log(arr2);
+
+            for (let index = 0; index < arr1.length; index++) {            
+                if (arr1[index] === arr2[index]) {
+                    console.log(arr1[index]);
+                    console.log(arr2[index]);
+                    acc++;
+                }                
+            }
+
+            if (acc === arr1.length) {
+                document.getElementById("h2").innerHTML += frase+ " // es palíndromo";  
+            } else{
+                document.getElementById("h2").innerHTML += frase+ " // no es palíndromo";
+            }  
+        }
+
+        palindromo();
+
+    </script>
+
+</body>
+</html>

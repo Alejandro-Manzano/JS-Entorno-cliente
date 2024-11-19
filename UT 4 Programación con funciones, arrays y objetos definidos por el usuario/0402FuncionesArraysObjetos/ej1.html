@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+
+    <h1 id="h1"></h1>
+        
+    <script>
+        function numAleatorio() {
+            let num1 = parseInt(prompt("num1")); 
+            let num2 = parseInt(prompt("num2")); 
+            let cantidad = parseInt(prompt("cantidad de numeros aleatorios")); 
+
+            document.getElementById("h1").innerHTML += cantidad + " nºs aleatorios entre " + num1 + " y " + num2 + ":";
+
+            let arrayAleatorios = [];
+
+            for (let i = 0; i < cantidad; i++) {     
+                arrayAleatorios.push(Math.floor(Math.random() * (num2 - num1 + 1)) + num1);
+            }
+
+            arrayAleatorios.forEach(element => {
+                let p = document.createElement("p");
+                p.innerHTML = element; // Solo mostrar el número
+                document.body.appendChild(p);
+            });
+        }
+
+        numAleatorio();
+    </script>
+</body>
+</html>

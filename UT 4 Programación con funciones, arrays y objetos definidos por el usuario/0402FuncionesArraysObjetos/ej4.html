@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    
+    <h1>Ejercicio 8 - Cifrar</h1>
+    <p id="p">Su palabra cifrada es: </p>
+
+    <script>
+
+        function cifrar() {
+            
+            const abecedarioOrdenado = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j','k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+            const desordenado =        ['e', 'y', 'k', 'b', 'n', 'd', 'g', 'z', 'c', 'p', 'o', 'm', 'r', 'h', 'u', 't', 'j', 'v', 'x', 'l', 's', 'f', 'q', 'a', 'i', 'w']; 
+            
+            let palabra = prompt("Dime una palabra");
+            let palabra2 = "";
+
+            for (let index = 0; index < palabra.length; index++) {
+                
+                let i = abecedarioOrdenado.indexOf(palabra[index]);
+                palabra2 += desordenado[i];
+                
+            }
+           
+            document.getElementById("p").innerHTML += palabra2;
+            
+
+        }
+
+        cifrar();
+
+    </script>
+
+</body>
+</html>

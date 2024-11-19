@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    
+    <h1>Ejercicio 7 - Fecha de hoy</h1>
+    <p id="p1">Fecha de hoy: </p>
+    <p id="p2">Día de la semana: </p>
+    <p id="p3">Mes: </p>
+
+    <script>
+
+        let fechaActual = new Date();
+        let dia = fechaActual.getDate();
+        let mes = fechaActual.getMonth()+1;
+        let year = fechaActual.getFullYear(); 
+
+        document.getElementById("p1").innerHTML += +dia+ "/" +mes+ "/" +year;
+
+        let diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+        document.getElementById("p2").innerHTML += diasSemana[fechaActual.getDay()];
+
+        let mesesDelAño = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+        document.getElementById("p3").innerHTML += mesesDelAño[fechaActual.getMonth()];
+
+
+    </script>
+
+</body>
+</html>

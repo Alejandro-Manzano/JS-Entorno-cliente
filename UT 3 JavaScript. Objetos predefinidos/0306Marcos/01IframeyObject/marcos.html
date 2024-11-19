@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 80px;
+            margin-bottom: 20px;
+        }
+        iframe, object {
+            width: 400px;
+            height: 400px;
+            margin-top: 20px;
+            background-color: burlywood;
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ejemplo de Iframe y Object</h1>
+
+    <div class="container">
+        <!-- Marco IFRAME -->
+        <div>
+            <a href="#" onclick="document.getElementById('iframe1').src='atrapagina.html';">Cargar otra página en marco IFRAME</a>
+            <iframe id="iframe1" src="pagina.html" title="Iframe"></iframe>
+        </div>
+
+        <!-- Marco OBJECT -->
+        <div>
+            <a href="#" onclick="document.getElementById('object1').data='atrapagina.html';">Cargar otra página en marco OBJECT</a>
+            <object id="object1" src="pagina.html" type="text/html"></object>
+        </div>
+    </div>
+
+</body>
+</html>

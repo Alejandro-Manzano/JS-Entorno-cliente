@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cambiar Color</title>
+    <script>
+        function cambiarColor() {
+            let marco = document.getElementById("marco").value;
+            let color = document.getElementById("color").value;
+            if (marco === "header") {
+                parent.headerframe.document.body.style.backgroundColor = color;
+            } else if (marco === "footer") {
+                parent.footerframe.document.body.style.backgroundColor = color;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Cambiar Color</h2>
+
+    <select id="marco">
+        <option value="header">Header</option>
+        <option value="footer">Footer</option>
+    </select>
+
+
+    <select id="color">
+        <option value="aqua">Aqua</option>
+        <option value="red">Rojo</option>
+        <option value="blue">Azul</option>
+    </select>
+
+    <button onclick="cambiarColor()">Cambiar</button>
+</body>
+</html>

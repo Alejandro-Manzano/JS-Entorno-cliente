@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe</title>
+    <style>
+        .container{
+            display: flex;
+        }
+        .i1, .i2{background-color: aqua;}
+    </style>
+</head>
+<body>
+        <iframe class="i1" name="headerframe" src="header.html"></iframe>
+        <div class="container">
+            <iframe src="panel.html"></iframe>
+            <iframe id="iframe3"></iframe>
+        </div>
+        <iframe class="i2" name="footerframe" src="footer.html"></iframe>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos HTML</title>
+</head>
+<body>
+    
+    <h1>Eventos en la Página</h1>
+    <p id="resizeCounter">Veces redimensionado: 0</p>
+    <p id="blurCounter">Veces que pierde el foco: 0</p>
+    <p id="closeAttemptCounter">Intentos de cerrar la ventana: 0</p>
+    
+    <script>
+        // Mostrar un mensaje de bienvenida al abrir la página
+        window.onload = function() {
+            alert("Se va a abrir la página Eventos HTML");
+        };
+
+        // Variables para contar los eventos
+        let resizeCount = 0;
+        let blurCount = 0;
+        let closeAttemptCount = 0;
+
+        // Obtener referencias a los elementos en el DOM
+        const resizeCounterDisplay = document.getElementById("resizeCounter");
+        const blurCounterDisplay = document.getElementById("blurCounter");
+        const closeAttemptCounterDisplay = document.getElementById("closeAttemptCounter");
+
+        // Evento de redimensionamiento de la ventana
+        window.addEventListener("resize", function() {
+            resizeCount++;
+            resizeCounterDisplay.textContent = `Veces redimensionado: ${resizeCount}`;
+        });
+
+        // Evento de pérdida de foco de la ventana
+        window.addEventListener("blur", function() {
+            blurCount++;
+            blurCounterDisplay.textContent = `Veces que pierde el foco: ${blurCount}`;
+        });
+
+        // Evento para interceptar el cierre de la ventana
+        window.addEventListener("beforeunload", function(event) {
+            // Pedir confirmación antes de cerrar la ventana
+            const message = "¿Estás seguro de que deseas salir de la página?";
+            event.returnValue = message;  // Esta línea es necesaria para algunos navegadores
+
+            // Contar el intento de cerrar solo si el usuario decide quedarse en la página
+            closeAttemptCount++;
+            closeAttemptCounterDisplay.textContent = `Intentos de cerrar la ventana: ${closeAttemptCount}`;
+
+            // Mostrar el mensaje de confirmación
+            return message;
+        });
+    </script>
+</body>
+</html>
