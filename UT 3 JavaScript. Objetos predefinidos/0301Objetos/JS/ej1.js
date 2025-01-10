@@ -1,5 +1,7 @@
 let fechaActual = new Date();
 const contenedor = document.getElementById('contenedor');
+console.log(fechaActual);
+
 
 // Día de la semana
 const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
