@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            background-color: silver;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+        }
+        a, p {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" onclick="cambiarEjercicio('Ejercicio1')">Ejercicio 1</a>
+    <a href="#" onclick="cambiarEjercicio('Ejercicio2')">Ejercicio 2</a>
+    <p id="p-fecha"></p>
+
+    <script>
+        // Función para enviar el nombre del ejercicio al iframe principal
+        function cambiarEjercicio(ejercicio) {
+            window.parent.postMessage({ ejercicio: ejercicio }, window.location.origin);
+        }
+
+        // Código para mostrar la fecha
+        let fecha = new Date();
+        const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+        const mesesAno = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                          "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        let dia = diasSemana[fecha.getDay()];
+        let mes = mesesAno[fecha.getMonth()];
+        let diaNumero = fecha.getDate(); // Día numérico
+        let fechaTotal = dia + ", " + diaNumero + " de " + mes + " " + fecha.getFullYear();
+        document.getElementById("p-fecha").innerHTML = fechaTotal;
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        .menu {
+            width: 100%;
+            height: 50px;
+            border: none; /* Sin borde alrededor del menú */
+        }
+        .principal {
+            width: 100%;
+            height: calc(100% - 50px); 
+            border: none; 
+        }
+    </style>
+</head>
+<body>
+    <iframe class="menu" id="menuIframe" src="/HTML/menu.html"></iframe>
+    <iframe class="principal" id="principalIframe" src="/HTML/Ejercicio1.html"></iframe>
+
+    <script>
+        // Obtén el iframe principal
+        var principalIframe = document.getElementById("principalIframe");
+
+        // Función para cambiar el src del iframe principal desde el menú
+        function cambiarEjercicio(ejercicio) {
+            principalIframe.src = "/HTML/" + ejercicio + ".html";
+        }
+
+        // Escuchar mensajes del iframe del menú
+        window.addEventListener("message", function(event) {
+            if (event.origin !== window.location.origin) return; // Seguridad
+            if (event.data && event.data.ejercicio) {
+                cambiarEjercicio(event.data.ejercicio); // Cambia el src del iframe
+            }
+        });
+    </script>
+</body>
+</html>
