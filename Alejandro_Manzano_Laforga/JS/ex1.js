@@ -1,6 +1,14 @@
 function aleatorio() {
     let inputValue = document.getElementById("nbr").value; 
     let numVeces = [];
+
+    if (isNaN(inputValue) || inputValue <= 0) {
+        document.getElementById("error").innerHTML = "Error"
+        return;
+    } else{
+        document.getElementById("error").innerHTML = ""
+    }
+
     for (let index = 0; index < inputValue; index++) {
         let ran =  Math.floor(Math.random() * 6) + 1; 
         numVeces.push(ran);
@@ -37,7 +45,15 @@ function aleatorio() {
     document.getElementById("p4").innerHTML = "Cara 4: " +acc4;
     document.getElementById("p5").innerHTML = "Cara 5: " +acc5;
     document.getElementById("p6").innerHTML = "Cara 6: " +acc6;
+
+    let arrayVeces = [acc1,acc2,acc3,acc4,acc5,acc6];
+    let maxCount = Math.max(...arrayVeces);
+    let caraFrecuente = arrayVeces.indexOf(maxCount)+1;
+
+    let percent = (maxCount/inputValue)*100;
+    let total = percent.toFixed(2).replace(".",",")
     
+    document.getElementById("result").innerHTML = "El número que mas veces ha salido es el "+ caraFrecuente+ " un total de " +total+ "%";
 }
 
 let btn = document.getElementById("btn");
@@ -45,3 +61,7 @@ btn.addEventListener("click", function(event) {
     event.preventDefault(); 
     aleatorio(); 
 });
+window.addEventListener("contextmenu",function(event) {
+    event.preventDefault();
+    alert("No click derecho");
+})
