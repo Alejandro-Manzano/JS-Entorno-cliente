@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const link1 = document.getElementById("a1");
+            const link2 = document.getElementById("a2");
+
+            // Ocultar el primer enlace al cargar la página
+            link1.style.display = "none";
+
+            // Agregar eventos de clic para alternar la visibilidad
+            link1.addEventListener("click", () => {
+                link1.style.display = "none";
+                link2.style.display = "inline";
+            });
+
+            link2.addEventListener("click", () => {
+                link2.style.display = "none";
+                link1.style.display = "inline";
+            });
+        });
+    </script>
+</head>
+<body>
+    <a href="1.html" target="content" id="a1">Pag 1</a>
+    <a href="2.html" target="content" id="a2">Pag 2</a>
+</body>
+</html>

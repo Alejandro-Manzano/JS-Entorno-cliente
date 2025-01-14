@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impresión en JavaScript</title>
+  <style>
+    /* Estilos para impresión */
+    @media print {
+      .no-print {
+        display: none; /* Ocultar contenido no deseado en impresión */
+      }
+    
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print">
+    <p>Esto no se imprimirá.</p>
+    <button  id="w">Imprimir</button>
+  </div>
+  <div class="print-area">
+    <h1>Contenido para impresión</h1>
+    <p>Este contenido aparecerá en el formato de impresora.</p>
+  </div>
+  <script>
+        document.getElementById("w").addEventListener("click", function (event) {
+            event.preventDefault()
+            window.print();
+        })
+  </script>
+</body>
+</html>
