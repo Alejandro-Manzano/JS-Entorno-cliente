@@ -1,133 +1,44 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validación de Formulario</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Colocar la fecha actual en el campo "Fecha"
-            const fechaInput = document.getElementById("fecha");
-            const hoy = new Date();
-            fechaInput.value = hoy.toISOString().split("T")[0];
-
-            // Validar el formulario
-            const formulario = document.getElementById("formulario");
-            formulario.addEventListener("submit", (e) => {
-                e.preventDefault();
-
-                const nombre = document.getElementById("nombre").value.trim();
-                const numeroDecimal = document.getElementById("numeroDecimal").value;
-                const hora = document.getElementById("hora").value;
-                const sexo = document.querySelector('input[name="sexo"]:checked');
-                const estadoCivil = document.getElementById("estadoCivil").value;
-
-                // Validación del campo "Nombre"
-                if (nombre.length < 3) {
-                    alert("El nombre debe tener al menos 3 caracteres.");
-                    return;
-                }
-
-                // Validación del campo "Número decimal"
-                if (!/^\d+(\.\d+)?$/.test(numeroDecimal)) {
-                    alert("El número decimal debe ser positivo.");
-                    return;
-                }
-
-                // Validación del campo "Hora"
-                const [horas] = hora.split(":");
-                if (horas < 9 || horas > 14) {
-                    alert("La hora debe estar entre las 9:00 y las 14:00.");
-                    return;
-                }
-
-                // Validar "Sexo" y "Estado civil"
-                if (!sexo) {
-                    alert("Debe seleccionar un sexo.");
-                    return;
-                }
-                if (estadoCivil === "") {
-                    alert("Debe seleccionar un estado civil.");
-                    return;
-                }
-
-                // Mostrar los datos introducidos
-                mostrarDatos();
-            });
-        });
-
-        function mostrarDatos() {
-            const nombre = document.getElementById("nombre").value.trim();
-            const texto = document.getElementById("texto").value;
-            const numeroDecimal = document.getElementById("numeroDecimal").value;
-            const fecha = document.getElementById("fecha").value;
-            const hora = document.getElementById("hora").value;
-            const frutas = Array.from(document.querySelectorAll('input[name="frutas"]:checked')).map(f => f.value);
-            const sexo = document.querySelector('input[name="sexo"]:checked').value;
-            const estadoCivil = document.getElementById("estadoCivil").value;
-
-            const datos = `
-                <p><strong>Datos del formulario:</strong></p>
-                <p>Nombre: ${nombre}</p>
-                <p>Texto: ${texto}</p>
-                <p>Número decimal: ${numeroDecimal}</p>
-                <p>Fecha: ${fecha}</p>
-                <p>Hora: ${hora}</p>
-                <p>Frutas que te gustan: ${frutas.join(", ")}</p>
-                <p>Sexo: ${sexo}</p>
-                <p>Estado civil: ${estadoCivil}</p>
-            `;
-            document.getElementById("resultados").innerHTML = datos;
-        }
-    </script>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Ejercicio 2 - Controles de un formulario. Validación HTML5</h1>
-    <form id="formulario">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required minlength="3">
+    <h1>Ejercicio 2. Controles de un Formulario. Validación HTML 5</h1>
+
+    <form>
+
+        <label>Nombre: </label><input id="nombre" placeholder="Nombre" minlength="3"><br><br>
+
+        <label>Text: </label><textarea id="txt"></textarea><br><br>
+
+        <label>Número decimal: </label><input type="text" pattern="^[0-9]*\.[0-9]+$" inputmode="decimal" placeholder="Número decimal">
         <br><br>
 
-        <label for="texto">Texto:</label>
-        <textarea id="texto" name="texto"></textarea>
+        <label>Fecha: </label><input type="date" placeholder=""><br><br>
+
+        <label>Que frutas te gustan ?</label>
+        Plátano <input type="radio" id="fruta" value="Plátano">
+        Manzana <input type="radio" id="fruta" value="Manzana">
+        Pera <input type="radio" id="fruta" value="Pera">
+        Fresa <input type="radio" id="fruta" value="Fresa">
+
         <br><br>
 
-        <label for="numeroDecimal">Número decimal:</label>
-        <input type="number" id="numeroDecimal" name="numeroDecimal" step="any" required>
+        <label>Sexo: </label>
+        Hombre <input type="radio" id="fruta" value="Hombre">
+        Mujer <input type="radio" id="fruta" value="Mujer">
+
         <br><br>
 
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required>
-        <br><br>
+        <button id="button1" type="submit">Enviar</button>
 
-        <label for="hora">Hora:</label>
-        <input type="time" id="hora" name="hora" required>
-        <br><br>
-
-        <label>¿Qué frutas te gustan?</label><br>
-        <input type="checkbox" id="naranja" name="frutas" value="Naranja"> Naranja
-        <input type="checkbox" id="pera" name="frutas" value="Pera"> Pera
-        <input type="checkbox" id="uva" name="frutas" value="Uva"> Uva
-        <input type="checkbox" id="mango" name="frutas" value="Mango"> Mango
-        <input type="checkbox" id="ninguna" name="frutas" value="Ninguna"> Ninguna
-        <br><br>
-
-        <label>Sexo:</label><br>
-        <input type="radio" id="hombre" name="sexo" value="Hombre"> Hombre
-        <input type="radio" id="mujer" name="sexo" value="Mujer"> Mujer
-        <br><br>
-
-        <label for="estadoCivil">Estado civil:</label>
-        <select id="estadoCivil" name="estadoCivil" required>
-            <option value="">Seleccione una opción...</option>
-            <option value="Soltero">Soltero</option>
-            <option value="Casado">Casado</option>
-        </select>
-        <br><br>
-
-        <button type="submit">Mostrar Datos</button>
     </form>
 
-    <div id="resultados"></div>
+    <div id="container"></div>
+
+    <script src="JS/ex2.js"></script>
 </body>
 </html>
