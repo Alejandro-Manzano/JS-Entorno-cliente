@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilos con jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <select id="colorTexto">
+        <option value="black">Negro</option>
+        <option value="red">Rojo</option>
+        <option value="blue">Azul</option>
+    </select>
+
+    <select id="colorFondo">
+        <option value="white">Blanco</option>
+        <option value="yellow">Amarillo</option>
+        <option value="green">Verde</option>
+    </select>
+
+    <button id="cambiar">Cambiar</button>
+
+    <p>Párrafo 1</p>
+    <p>Párrafo 2</p>
+    <p>Párrafo 3</p>
+
+    <script>
+        $(document).ready(function(){
+            $("#cambiar").click(function(){
+                $("p").css({
+                    "color": $("#colorTexto").val(),
+                    "background-color": $("#colorFondo").val()
+                });
+            });
+        });
+    </script>
+</body>
+</html>
