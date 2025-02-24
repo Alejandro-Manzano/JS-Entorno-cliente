@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cambio de Divisas - API Frankfurter</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const selectFrom = document.getElementById("fromCurrency");
+      const selectTo = document.getElementById("toCurrency");
+      const inputFrom = document.getElementById("amountFrom");
+      const inputTo = document.getElementById("amountTo");
+      const rateDisplay = document.getElementById("rateDisplay");
+
+      // Cargar la lista de divisas
+      function loadCurrencies() {
+        fetch("https://api.frankfurter.app/currencies")
+          .then(response => response.json())
+          .then(data => {
+            for (const code in data) {
+              const optionFrom = document.createElement("option");
+              optionFrom.value = code;
+              optionFrom.textContent = code + " - " + data[code];
+              selectFrom.appendChild(optionFrom);
+
+              const optionTo = document.createElement("option");
+              optionTo.value = code;
+              optionTo.textContent = code + " - " + data[code];
+              selectTo.appendChild(optionTo);
+            }
+            // Seleccionar por defecto EUR a USD
+            selectFrom.value = "EUR";
+            selectTo.value = "USD";
+            // Realizar conversión inicial de 1 EUR a USD
+            convert(inputFrom.value || 1, "from");
+          })
+          .catch(error => console.error("Error al cargar divisas:", error));
+      }
+
+      // Función de conversión: direction "from" indica convertir de inputFrom a inputTo y "to" viceversa.
+      function convert(amount, direction) {
+        const from = direction === "from" ? selectFrom.value : selectTo.value;
+        const to = direction === "from" ? selectTo.value : selectFrom.value;
+        fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`)
+          .then(response => response.json())
+          .then(data => {
+            const rate = Object.values(data.rates)[0];
+            rateDisplay.textContent = `1 ${from} = ${rate} ${to}`;
+            if (direction === "from") {
+              inputTo.value = rate;
+            } else {
+              // Si se modifica el input de destino, se calcula el valor inverso.
+              inputFrom.value = (1 / rate).toFixed(2);
+            }
+          })
+          .catch(error => console.error("Error en la conversión:", error));
+      }
+
+      // Eventos para cambios en los desplegables o en los inputs
+      selectFrom.addEventListener("change", () => convert(inputFrom.value || 1, "from"));
+      selectTo.addEventListener("change", () => convert(inputFrom.value || 1, "from"));
+
+      inputFrom.addEventListener("input", () => {
+        if (inputFrom.value === "") {
+          inputTo.value = "";
+          return;
+        }
+        convert(inputFrom.value, "from");
+      });
+
+      inputTo.addEventListener("input", () => {
+        if (inputTo.value === "") {
+          inputFrom.value = "";
+          return;
+        }
+        convert(inputTo.value, "to");
+      });
+
+      loadCurrencies();
+    });
+  </script>
+</head>
+<body>
+  <h1>Cambio de Divisas - API Frankfurter</h1>
+  <p id="rateDisplay">Cargando tasa de cambio...</p>
+  <div>
+    <label for="fromCurrency">De: </label>
+    <select id="fromCurrency"></select>
+    <input type="number" id="amountFrom" value="1" min="0" step="any">
+  </div>
+  <br>
+  <div>
+    <label for="toCurrency">A: </label>
+    <select id="toCurrency"></select>
+    <input type="number" id="amountTo" value="" min="0" step="any">
+  </div>
+</body>
+</html>
