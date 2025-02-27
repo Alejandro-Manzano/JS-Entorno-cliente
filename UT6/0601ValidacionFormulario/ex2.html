@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+    <style>
+        #container{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+    <form>
+        <label>Nombre:</label>
+        <input id="n" type="text" name="nombre" minlength="3" required>
+        <br><br>
+        <label>Texto:</label>
+        <textarea name="texto"></textarea>
+        <br><br>
+        <label>Número decimal:</label>
+        <input type="number" name="decimal" step="0.01" step="any">
+        <br><br>
+        <label>Fecha:</label>
+        <input required id="fecha" name="fecha">
+        <br><br>
+        <label for="hora">Selecciona una hora:</label>
+<input type="time" id="hora" min="09:00" max="14:00" step="3600" >
+
+        <br><br>
+        <label>¿Qué frutas te gustan?</label>
+        <input type="checkbox" name="fruta[]" value="Naranja"> Naranja
+        <input type="checkbox" name="fruta[]" value="Pera"> Pera
+        <input type="checkbox" name="fruta[]" value="Uva"> Uva
+        <input type="checkbox" name="fruta[]" value="Mango"> Mango
+        <input type="checkbox" name="fruta[]" value="Ninguna"> Ninguna
+        <br><br>
+        <label>Sexo:</label>
+        <input type="radio" name="sexo" value="Hombre"  required> Hombre
+        <input type="radio" name="sexo" value="Mujer"> Mujer
+        <br><br>
+        <label>Estado civil:</label>
+        <select name="estado_civil" required>
+            <option value="" disabled selected>-Seleccione una opción-</option>
+            <option value="soltero">Soltero/a</option>
+            <option value="casado">Casado/a</option>
+            <option value="divorciado">Divorciado/a</option>
+            <option value="viudo">Viudo/a</option>
+        </select>
+
+        <br><br>
+        <button type="button" id="b">Mostrar Datos</button>
+    </form>
+
+    <br><br>
+
+    <div id="container">
+        <h1>Datos</h1>
+        <p id="pn">Nombre: </p>
+    </div>
+
+    <script src="ex2.js"></script>
+</body>
+</html>
