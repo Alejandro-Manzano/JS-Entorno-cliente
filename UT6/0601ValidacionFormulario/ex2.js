@@ -21,7 +21,15 @@ function lanzar() {
         container.style.display = "block"; // Mostrar el div cuando el botón sea presionado
     }
 
-   
+    let seleccionado = document.querySelector('input[name="sexo"]:checked').value;
+
+    document.getElementById("s").innerHTML = "Sexo: " + seleccionado;
+    
+    let s2 = [...document.querySelectorAll('input[name="fruta[]"]:checked')].map(f => f.value);
+    document.getElementById("fruta").innerHTML = "Frutas: " + s2;
+
+    let s3 = document.getElementById("es").value;
+    document.getElementById("estado").innerHTML = "Estado: " +s3;
    
 }
 

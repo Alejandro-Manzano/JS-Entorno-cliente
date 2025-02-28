@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - CheckBox y Radios</title>
+</head>
+<body>
+
+<div class="container">
+    
+    <form id="formulario">
+        <input type="checkbox" name="lenguaje" value="C" class="checkbox"> C
+        <input type="checkbox" name="lenguaje" value="C++" class="checkbox"> C++
+        <input type="checkbox" name="lenguaje" value="C#" class="checkbox"> C#
+        <br>
+
+        <p><strong>¿Eres socio?</strong></p>
+        <input type="radio" name="socio" value="Soy socio" id="socio" required> Soy socio <br>
+        <input type="radio" name="socio" value="No soy socio pero la he utilizado anteriormente"> No soy socio pero la he utilizado anteriormente <br>
+        <input type="radio" name="socio" value="Es la primera vez que asisto"> Es la primera vez que asisto <br>
+
+        <button id="b" type="submit">Enviar datos</button>
+    </form>
+</div>
+<p id="lenguages"></p>
+
+<script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+        let checkboxes = document.querySelectorAll(".checkbox");
+        let checked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+        
+        if (!checked) {
+            alert("Debes seleccionar al menos un lenguaje.");
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>

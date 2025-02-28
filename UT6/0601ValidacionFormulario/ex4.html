@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - CheckBox y Radios</title>
+   <style>
+    .l{
+        display: none;
+    }
+    #socioInput{
+        display: none;
+    }
+   </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Ejercicio 4 - CheckBox y Radios</h3>
+
+    <p><strong>Lenguajes de programación</strong></p>
+    <form id="formulario">
+        <input type="checkbox" name="lenguaje" value="C"> C
+        <input type="checkbox" name="lenguaje" value="C++"> C++
+        <input type="checkbox" name="lenguaje" value="C#"> C#
+        <input type="checkbox" name="lenguaje" value="Java"> Java
+        <input type="checkbox" name="lenguaje" value="PHP"> PHP
+        <input type="checkbox" name="lenguaje" value="Python"> Python
+        <input type="checkbox" name="lenguaje" value="Ruby"> Ruby
+        <input type="checkbox" name="lenguaje" value="Otros" id="otro"> Otros
+        <input type="text" id="ft" class="l">
+        <br>
+        <a href="" id="marcarTodos">Marcar todos</a>
+        <a href="" id="desmarcarTodos">Desmarcar todos</a>
+
+        <p><strong>¿Eres socio?</strong></p>
+        <input type="radio" name="socio" value="Soy socio" id="socio"> Soy socio <br><input id="socioInput" placeholder="nº socio"><br>
+        <input type="radio" name="socio" value="No soy socio pero la he utilizado anteriormente"> No soy socio pero la he utilizado anteriormente <br>
+        <input type="radio" name="socio" value="Es la primera vez que asisto"> Es la primera vez que asisto <br>
+
+        <button id="b" type="button">Enviar datos</button>
+    </form>
+</div>
+<p id="lenguages"></p>
+
+<script src="ex4.js">
+ 
+</script>
+
+</body>
+</html>

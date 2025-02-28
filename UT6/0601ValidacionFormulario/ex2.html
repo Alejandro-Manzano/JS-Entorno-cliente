@@ -38,11 +38,11 @@
         <input type="checkbox" name="fruta[]" value="Ninguna"> Ninguna
         <br><br>
         <label>Sexo:</label>
-        <input type="radio" name="sexo" value="Hombre"  required> Hombre
-        <input type="radio" name="sexo" value="Mujer"> Mujer
+        <input id="sexo" type="radio" name="sexo" value="Hombre"  required> Hombre
+        <input id="sexo" type="radio" name="sexo" value="Mujer"> Mujer
         <br><br>
-        <label>Estado civil:</label>
-        <select name="estado_civil" required>
+        <label>Estado civil:</label>        
+        <select id="es" name="estado_civil" required>
             <option value="" disabled selected>-Seleccione una opción-</option>
             <option value="soltero">Soltero/a</option>
             <option value="casado">Casado/a</option>
@@ -58,7 +58,10 @@
 
     <div id="container">
         <h1>Datos</h1>
-        <p id="pn">Nombre: </p>
+        <p id="pn"> </p>
+        <p id="fruta"></p>
+        <p id="s"></p>
+        <p id="estado"></p>
     </div>
 
     <script src="ex2.js"></script>
